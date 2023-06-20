@@ -49,3 +49,13 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<div class="container" *ngIf="!systemInfo">
+  <mat-card class="card">
+    <mat-card-title>No data!</mat-card-title>
+    <mat-card-content>
+      Systeminfo for the requested server is not available! Please contact
+      customer service if this error persists.
+    </mat-card-content>
+  </mat-card>
+</div>

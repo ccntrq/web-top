@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WebTopComponent } from './web-top/web-top.component';
+import { WebTopWrapperComponent } from './web-top-wrapper/web-top-wrapper.component';
 
-      
-const routes: Routes = [
-  { path: '**', component: WebTopComponent },
-];
+const routes: Routes = [{ path: '**', component: WebTopWrapperComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

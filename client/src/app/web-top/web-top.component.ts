@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SystemInfo } from '../types';
-import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-web-top',
@@ -8,15 +7,8 @@ import { WebsocketService } from '../websocket.service';
   styleUrls: ['./web-top.component.scss'],
 })
 export class WebTopComponent {
+  @Input()
   systemInfo: SystemInfo | undefined = undefined;
-  constructor(private websocketService: WebsocketService) {}
-
-  ngOnInit() {
-    this.websocketService.listenForEvents().subscribe((data: SystemInfo) => {
-      console.log(data);
-      this.systemInfo = data;
-    });
-  }
 
   calculateMemoryUsage(): number {
     if (!this.systemInfo) {
