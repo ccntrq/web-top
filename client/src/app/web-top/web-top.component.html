@@ -1,0 +1,51 @@
+<div class="container" *ngIf="systemInfo">
+  <mat-card class="card">
+    <mat-card-title>Cores</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let core of systemInfo.cores | keyvalue">
+        Core {{ core.key }}: {{ (core.value * 100).toFixed(2) }}%
+        <mat-progress-bar
+          mode="determinate"
+          [value]="core.value * 100"
+        ></mat-progress-bar>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Memory</mat-card-title>
+    <mat-card-content>
+      Total: {{ systemInfo.memory.total.toFixed(2) }} GB<br />
+      Free: {{ systemInfo.memory.free.toFixed(2) }} GB
+      <mat-progress-bar
+        mode="determinate"
+        [value]="calculateMemoryUsage()"
+      ></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Tasks</mat-card-title>
+    <mat-card-content>
+      Tasks: {{ systemInfo.tasks.tasks }}<br />
+      Threads: {{ systemInfo.tasks.threads }}<br />
+      Running: {{ systemInfo.tasks.running }}
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Uptime</mat-card-title>
+    <mat-card-content>
+      Uptime: {{ systemInfo.uptime.uptime | secondsToTime }}
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Load</mat-card-title>
+    <mat-card-content>
+      Load 1: {{ systemInfo.load.load1.toFixed(2) }}<br />
+      Load 5: {{ systemInfo.load.load5.toFixed(2) }}<br />
+      Load 15: {{ systemInfo.load.load15.toFixed(2) }}
+    </mat-card-content>
+  </mat-card>
+</div>
